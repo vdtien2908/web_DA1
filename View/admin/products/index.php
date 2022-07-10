@@ -50,7 +50,8 @@
                             <tr>
                                 <td>1</td>
                                 <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
+                                <td>Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp
+                                </td>
                                 <td>1400000 VND</td>
                                 <td>
                                     <div class="button-wrap">

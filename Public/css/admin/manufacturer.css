@@ -1,3 +1,6 @@
+.home-content {
+  position: relative;
+}
 .home-content-table {
   width: 100%;
 }
@@ -74,7 +77,7 @@ button {
 .home-content-table_section tbody td {
   border-bottom: 1px solid #ddd;
   padding: 10px 20px;
-  word-break: break-all;
+  word-break: break-word;
   text-align: center;
 }
 
@@ -297,4 +300,63 @@ button {
 
 .btn-wrap-link:hover {
   opacity: 0.8;
+}
+
+.form-confirm-delete {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8493a5;
+  display: inline-block;
+  padding: 10px;
+  z-index: 99;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.form-confirm-delete p {
+  padding: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.form-confirm-delete-btn {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.form-confirm-delete-btn-child {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.form-confirm-delete-btn-child:hover {
+  opacity: 0.7;
+}
+
+.form-confirm-delete-btn .form-confirm-delete-btn-child:first-child {
+  background-color: #ed1c24;
+  color: #fff;
+}
+
+.form-confirm-delete-btn .form-confirm-delete-btn-child:last-child {
+  background-color: #ccc;
+  color: #000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 240px;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.4;
+  z-index: 10;
 }

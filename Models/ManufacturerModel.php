@@ -1,23 +1,21 @@
 <?php
-
-class CategoryModel extends BaseModel
+class ManufacturerModel extends BaseModel
 {
+    const TABLE = 'manufacturers';
 
-    const TABLE = 'categories';
-
-    public function getALL($select = ['*'], $orderBys = [], $limit)
+    public function getAll($select = [], $orderBys = [], $limit)
     {
         return $this->all(self::TABLE, $select, $orderBys, $limit);
-    }
-
-    public function findById($id)
-    {
-        return $this->find(self::TABLE, $id);
     }
 
     public function store($data)
     {
         return $this->create(self::TABLE, $data);
+    }
+
+    public function findById($id)
+    {
+        return $this->find(self::TABLE, $id);
     }
 
     public function update($id, $data)
