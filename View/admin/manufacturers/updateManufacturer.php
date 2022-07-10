@@ -27,18 +27,23 @@
                     Quay lại
                 </a>
             </div>
-            <form class="form-layout">
+
+            <form action="?controller=manufacturer&action=saveUpdate&id=<?php echo $result['id']; ?>" method="POST"
+                class="form-layout">
                 <p>Cập Nhật thông tin nhà sản xuất</p>
                 <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" ">
+                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['name']; ?>"
+                        name="name">
                     <label for=" name" class=" form-label">Tên</label>
                 </div>
                 <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" ">
+                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['phone']; ?>"
+                        name="phone">
                     <label for=" name" class=" form-label">Số điện thoại</label>
                 </div>
                 <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" ">
+                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['address']; ?>"
+                        name="address">
                     <label for=" name" class=" form-label">Địa chỉ</label>
                 </div>
 
@@ -49,7 +54,6 @@
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>

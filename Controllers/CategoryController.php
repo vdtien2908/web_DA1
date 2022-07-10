@@ -42,15 +42,27 @@ class CategoryController extends BaseController
     {
         $id = $_GET['id'];
         $name = $_POST['name'];
-        $data = ['name' => $name];
-        $this->categoryModel->update($id, $data);
-        $this->index();
+        if ($id) {
+            if ($name) {
+                $data = ['name' => $name];
+                $this->categoryModel->update($id, $data);
+                $this->index();
+            } else {
+                $this->index();
+            }
+        } else {
+            $this->index();
+        }
     }
 
     public function delete()
     {
         $id = $_GET['id'];
-        $this->categoryModel->delete($id);
-        $this->index();
+        if ($id) {
+            $this->categoryModel->delete($id);
+            $this->index();
+        } else {
+            $this->index();
+        }
     }
 }
