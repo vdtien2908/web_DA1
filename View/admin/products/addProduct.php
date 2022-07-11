@@ -27,39 +27,41 @@
                     Quay lại
                 </a>
             </div>
-            <form class="form-layout">
+            <form class="form-layout" action="?controller=product&action=create" method="POST"
+                enctype="multipart/form-data">
                 <p>Nhập sản phẩm</p>
                 <div class="form-field-wrap">
                     <div class="form-field add-product form-child-1">
-                        <input type="text" class="form-input" placeholder=" ">
+                        <input type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
                         <label for=" name" class=" form-label">Tên</label>
                     </div>
                     <div class="form-field add-product form-child-2">
-                        <input type=" text" class="form-input" placeholder=" ">
+                        <input type=" text" class="form-input" placeholder=" " name="price" autocomplete="off">
                         <label for=" name" class=" form-label">Giá</label>
                     </div>
                 </div>
                 <div class="form-field add-product">
-                    <textarea cols="9" type="text" class="form-input" placeholder=" "></textarea>
+                    <textarea type="text" class="form-input" placeholder=" " name="description"></textarea>
                     <label for=" name" class=" form-label">Mô tả</label>
                 </div>
                 <div class="form-select">
                     <select name="manufacturer" class="form-select-child">
                         <option selected disabled>-- Nhà cung cấp --</option>
-                        <option value="0">Việt Nam</option>
-                        <option value="1">Lào</option>
-                        <option value="2">Campuchia</option>
+                        <?php foreach ($manufacturer as $value) : ?>
+                        <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <select name="category" class="form-select-child">
                         <option selected disabled>-- Danh mục --</option>
-                        <option value="0">Nước hoa nam</option>
-                        <option value="1">Nước hoa nữ</option>
-                        <option value="2">nước hoa cao câp</option>
+                        <?php foreach ($category as $value) : ?>
+                        <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-file-wrap">
-                    <input type="file" id="form-file" accept="image/*">
-                    <label for="form-file" class="form-label-file">
+                    <img id="blah" src="#" alt="Hình ảnh" />
+                    <input type="file" id="imgInp" accept="image/*" name="file">
+                    <label for="imgInp" class="form-label-file">
                         <i class='bx bx-image'></i>
                     </label>
                 </div>
@@ -71,7 +73,14 @@
 
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
+    <script>
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file);
+        }
+    }
+    </script>
 </body>
 
 </html>

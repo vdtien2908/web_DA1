@@ -58,7 +58,26 @@ class BaseModel extends Database
     {
         $sql = "DELETE FROM ${table} WHERE id = ${id}";
         $this->_query($sql);
+        $data = [];
     }
+
+    public function getByQuery($sql)
+    {
+        $query = $this->_query($sql);
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($data, $row);
+        }
+        return $data;
+    }
+
+    public function detailMain($table, $id)
+    {
+        $sql = "SELECT * FROM ${table} WHERE id = ${id}";
+        $query = $this->_query($sql);
+        return  mysqli_fetch_assoc($query);
+    }
+
 
     private function _query($sql)
     {

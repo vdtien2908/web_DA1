@@ -28,28 +28,42 @@
                         Quay lại
                     </a>
                 </div>
-                <div class="home-content-table_section">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Hình ảnh</th>
-                                <th>Tên</th>
-                                <th>Giá</th>
-                                <th>Mô tả</th>
-                                <th>Nhà cung cấp</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>Thơm lâu bền</td>
-                                <td>Việt Nam</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <?php foreach ($result as $value) : ?>
+                <div class="home-content-product-detail-wrap">
+                    <div class="home-content-product-detail">
+                        <span class="product-detail-category <?php if ($value['nameCategory'] == 'Nam') {
+                                                                        echo 'active-boy';
+                                                                    } elseif ($value['nameCategory'] == 'Nữ') {
+                                                                        echo 'active-girl';
+                                                                    } else {
+                                                                        echo 'active-category';
+                                                                    } ?>">
+                            <?php echo $value['nameCategory']; ?>
+                        </span>
+                        <div class="product-detail-img">
+                            <img src="./Public/img/product/<?php echo $value['img'] ?>" alt="">
+                        </div>
+                        <div class="product-detail-content">
+                            <h2 class="product-detail-content-name"><?php echo $value['nameProduct']; ?></h2>
+                            <span
+                                class="
+                                product-detail-content-price"><?php echo number_format($value['price'], 0, '.', '.'); ?>
+                                VND</span>
+                            <p class="product-detail-content-description"><?php echo $value['description']; ?></p>
+                            <p class="product-detail-content-Manufacturer">Nhà sản xuất:
+                                <?php echo $value['nameManufacturer']; ?></p>
+                        </div>
+                        <div class="product-detail-time">
+                            <p class="product-detail-create_at">Thời gian tạo:
+                                <?php echo $value['create_at']; ?></p>
+                            </p>
+                            <?php if ($value['update_at']) {
+                                    echo "<p class='product-detail-update_at'>Cập nhật lần cuối: " . $value['update_at'] . "</p>";
+                                } ?>
+                        </div>
+                    </div>
                 </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <!-- Home Content begin -->
