@@ -2,29 +2,126 @@
 
 class ProductController extends BaseController
 {
+    private $productModel;
+
+    public function __construct()
+    {
+        $this->loadModel('ProductMOdel');
+        $this->productModel = new ProductModel();
+    }
 
     public function index()
     {
-        return $this->view('admin.products.index');
+        $select = ['id', 'name', 'price', 'img'];
+        $order = ['id'];
+        $result = $this->productModel->getAll($select, $order);
+        $this->view('admin.products.index', ['result' => $result]);
     }
 
     public function find()
     {
-        return $this->view('admin.products.searchProduct');
+        $value = $_POST['search'];
+        if ($value) {
+            trim($value);
+            $result = $this->productModel->searchName($value);
+            $this->view('admin.products.searchProduct', ['result' => $result]);
+        } else {
+            $this->index();
+        }
     }
 
     public function show()
     {
-        return $this->view('admin.products.showProduct');
+        $id = $_GET['id'];
+        if ($id) {
+            $result = $this->productModel->show($id);
+            $this->view('admin.products.showProduct', ['result' => $result]);
+        } else {
+            $this->index();
+        }
     }
 
-    public function add()
+
+
+    public function formCreate()
     {
-        return $this->view('admin.products.addProduct');
+        $this->loadModel('CategoryModel');
+        $this->loadModel('ManufacturerModel');
+        $categoryModel = new CategoryModel();
+        $manufacturerModel = new ManufacturerModel();
+        $select = ['id', 'name'];
+        $order = ['id'];
+        $limit = 100;
+        $category = $categoryModel->getALL($select, $order, $limit);
+        $manufacturer = $manufacturerModel->getALL($select, $order, $limit);
+        $this->view('admin.products.addProduct', ['category' => $category, 'manufacturer' => $manufacturer]);
+    }
+
+    public function create()
+    {
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $des = $_POST['description'];
+        $category_id = $_POST['category'];
+        $manufacturer_id = $_POST['manufacturer'];
+        $file = $_FILES['file'];
+
+        // format name file
+        $error = [];
+        $size_allow = 10;
+        $fileName = $file['name'];
+        $fileName = explode('.', $fileName);
+        $ext = end($fileName);
+        $new_file_name = md5(uniqid()) . '.' . $ext;
+
+        //Check type file
+        $allow_ext = ['jpg', 'png', 'gif', 'bmp', 'jpeg'];
+        if (in_array($ext, $allow_ext)) {
+            $size = $file['size'] / 1024 / 1024;
+            if ($size <= $size_allow) {
+                $upload = move_uploaded_file($file['tmp_name'], './Public/img/product/' . $new_file_name);
+                if (!$upload) {
+                    $error[] = 'error upload';
+                }
+            } else {
+                $error = 'size_error';
+            }
+        } else {
+            $error[] = 'ext_error';
+        }
+
+        if ($name || $price || $des || $category_id || $manufacturer_id) {
+            $data = ['name' => $name, 'price' => $price, 'description' => $des, 'img' => $new_file_name, 'category_id' => $category_id, 'manufacturer_id' => $manufacturer_id];
+            $this->productModel->store($data);
+            $this->index();
+        } else {
+            $this->index();
+        }
+
+        $this->view('admin.products.test');
+    }
+
+    public function formUpdate()
+    {
+        $this->loadModel('CategoryModel');
+        $this->loadModel('ManufacturerModel');
+        $categoryModel = new CategoryModel();
+        $manufacturerModel = new ManufacturerModel();
+        $select = ['id', 'name'];
+        $order = ['id'];
+        $limit = 100;
+        $category = $categoryModel->getALL($select, $order, $limit);
+        $manufacturer = $manufacturerModel->getALL($select, $order, $limit);
+        $id = $_GET['id'];
+        if ($id) {
+            $result = $this->productModel->detail($id);
+            $this->view('admin.products.updateProduct', ['product' => $result, 'manufacturer' => $manufacturer, 'category' => $category]);
+        } else {
+            $this->index();
+        }
     }
 
     public function update()
     {
-        return $this->view('admin.products.updateProduct');
     }
 }

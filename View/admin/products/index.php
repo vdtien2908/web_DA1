@@ -24,12 +24,12 @@
                 <div class="home-content-table_header">
                     <p>Sản phẩm</p>
                     <form action="?controller=product&action=find" method="post">
-                        <input type="text" placeholder="Tìm kiếm">
+                        <input type="text" placeholder="Tìm kiếm" name=search autocomplete="off">
                         <button class="btn-search" type="submit">
                             <i class='bx bx-search'></i>
                         </button>
                     </form>
-                    <a href="?controller=product&action=add">
+                    <a href="?controller=product&action=formCreate">
                         <button class="btn-card-add">
                             <i class='bx bx-cart-add'></i>
                         </button>
@@ -47,26 +47,30 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $number = 1;
+                            foreach ($result as $value) : ?>
                             <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp Nước hoa pháp
-                                </td>
-                                <td>1400000 VND</td>
+                                <td>
+                                    <?php echo $number;
+                                        $number++ ?> </td>
+                                <td><img src="./Public/img/product/<?php echo $value['img'] ?>" alt=""></td>
+                                <td><?php echo $value['name']; ?></td>
+                                <td><?php echo number_format($value['price'], 0, '.', '.'); ?> VND</td>
                                 <td>
                                     <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
+                                        <a href="?controller=product&action=show&id=<?php echo $value["id"]; ?>">
                                             <button>
                                                 <i class='bx bx-show'></i>
                                             </button>
                                         </a>
-                                        <a href="?controller=product&action=update">
+                                        <a href="?controller=product&action=formUpdate&id=<?php echo $value["id"]; ?>">
                                             <button>
                                                 <i class='bx bxs-edit'></i>
                                             </button>
                                         </a>
 
-                                        <a href="?controller=product&action=delete">
+                                        <a href=" ?controller=product&action=delete">
                                             <button>
                                                 <i class='bx bx-trash'></i>
                                             </button>
@@ -74,266 +78,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-
-                                        <a href="?controller=product&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

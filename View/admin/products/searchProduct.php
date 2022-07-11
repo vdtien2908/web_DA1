@@ -40,14 +40,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $number = 1;
+                            foreach ($result as $value) : ?>
                             <tr>
-                                <td>1</td>
-                                <td><img src="./Public/img/2.jpg" alt=""></td>
-                                <td>Nước hoa pháp</td>
-                                <td>1400000 VND</td>
+                                <td><?php echo $number;
+                                        $number++ ?>
+                                </td>
+                                <td><img src="./Public/img/product/2.jpg" alt=""></td>
+                                <td><?php echo $value['name'] ?></td>
+                                <td><?php echo number_format($value['price'], 0, '.', '.'); ?> VND</td>
                                 <td>
                                     <div class="button-wrap">
-                                        <a href="?controller=product&action=show">
+                                        <a href="?controller=product&action=show&id=<?php echo $value["id"]; ?>">
                                             <button>
                                                 <i class='bx bx-show'></i>
                                             </button>
@@ -66,6 +70,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -73,7 +78,6 @@
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>
