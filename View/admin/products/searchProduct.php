@@ -46,7 +46,7 @@
                                 <td><?php echo $number;
                                         $number++ ?>
                                 </td>
-                                <td><img src="./Public/img/product/2.jpg" alt=""></td>
+                                <td><img src="./Public/img/product/<?php echo $value['img'] ?>" alt=""></td>
                                 <td><?php echo $value['name'] ?></td>
                                 <td><?php echo number_format($value['price'], 0, '.', '.'); ?> VND</td>
                                 <td>

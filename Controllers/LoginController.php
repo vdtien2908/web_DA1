@@ -1,14 +1,42 @@
 <?php
-
 class LoginController extends BaseController
 {
-    public function index()
+    private $AdminModel;
+    public function __construct()
     {
-        return $this->view('admin.Login.index');
+
+        $this->loadModel('AdminModel');
+        $this->AdminModel = new AdminModel();
     }
 
-    public function show()
+    public function index()
     {
-        echo __METHOD__;
+        $this->view('admin.Login.index');
+    }
+
+    public function login()
+    {
+        $email = $_POST['login-email'];
+        $pass = $_POST['login-password'];
+        $result = $this->AdminModel->searchEmail($email);
+        if ($result) {
+            if ($pass == $result['password']) {
+                $_SESSION['login'] = $result;
+                print_r($_SESSION['login']);
+                header('Location:?controller=home');
+            } else {
+                echo 'sai mật khẩu';
+            }
+        } else {
+            echo 'email không hợp lệ';
+        }
+    }
+
+    public function logout()
+    {
+        if ($_SESSION['login']) {
+            unset($_SESSION['login']);
+            header('Location:?controller=login');
+        }
     }
 }

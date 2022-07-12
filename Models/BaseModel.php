@@ -3,6 +3,7 @@
 class BaseModel extends Database
 {
     protected $connect;
+    protected $table;
     public function __construct()
     {
         $this->connect = $this->connect();
@@ -71,13 +72,20 @@ class BaseModel extends Database
         return $data;
     }
 
-    public function detailMain($table, $id)
+    public function getEmail($table, $email)
     {
+        $sql = "SELECT * FROM admin WHERE email = '${email}'";
+        $query = $this->_query($sql);
+        return mysqli_fetch_assoc($query);
+    }
+
+    public function detail($id)
+    {
+        $table = $this->table;
         $sql = "SELECT * FROM ${table} WHERE id = ${id}";
         $query = $this->_query($sql);
         return  mysqli_fetch_assoc($query);
     }
-
 
     private function _query($sql)
     {

@@ -3,7 +3,7 @@
 class ProductModel extends BaseModel
 {
     const TABLE = 'products';
-
+    protected $table = 'products';
 
     public function getAll($select = [], $orderBys = [], $limit = 1000)
     {
@@ -15,12 +15,6 @@ class ProductModel extends BaseModel
         $sql = "SELECT *, products.name as nameProduct, manufacturers.name as nameManufacturer, categories.name as nameCategory FROM products, manufacturers, categories WHERE products.category_id = categories.id AND  products.manufacturer_id = manufacturers.id AND products.id = ${id}";
         return $this->getByQuery($sql);
     }
-
-    public function detail($id)
-    {
-        return $this->detailMain(self::TABLE, $id);
-    }
-
 
     public function searchName($name)
     {
