@@ -97,8 +97,6 @@ class ProductController extends BaseController
         } else {
             $this->index();
         }
-
-        $this->view('admin.products.test');
     }
 
     public function formUpdate()
@@ -123,5 +121,78 @@ class ProductController extends BaseController
 
     public function update()
     {
+        $id = $_GET['id'];
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $des = $_POST['description'];
+        $category_id = $_POST['category'];
+        $manufacturer_id = $_POST['manufacturer'];
+        $file = $_FILES['file'];
+
+        $result = $this->productModel->detail($id);
+        $nameImg = $result['img'];
+        // format name file
+        $error = [];
+        $size_allow = 10;
+        $fileName = $file['name'];
+        $fileName = explode('.', $fileName);
+        $ext = end($fileName);
+        $new_file_name = md5(uniqid()) . '.' . $ext;
+
+        //Check type file
+        $allow_ext = ['jpg', 'png', 'gif', 'bmp', 'jpeg'];
+        if (in_array($ext, $allow_ext)) {
+            $size = $file['size'] / 1024 / 1024;
+            if ($size <= $size_allow) {
+                $upload = move_uploaded_file($file['tmp_name'], './Public/img/product/' . $new_file_name);
+                if ($upload) {
+                    unlink("./Public/img/product/${nameImg}");
+                }
+                if (!$upload) {
+                    $error[] = 'error upload';
+                }
+            } else {
+                $error = 'size_error';
+            }
+        } else {
+            $error[] = 'ext_error';
+        }
+
+        $data = [];
+        if ($name != $result['name']) {
+            $data['name'] = $name;
+        }
+        if ($price != $result['price']) {
+            $data['price'] = $price;
+        }
+        if ($des != $result['description']) {
+            $data['description'] = $des;
+        }
+        if ($category_id != $result['category_id']) {
+            $data['category_id'] = $category_id;
+        }
+        if ($manufacturer_id != $result['manufacturer_id']) {
+            $data['manufacturer_id'] = $manufacturer_id;
+        }
+        if ($file && $file['name']) {
+            $data['img'] = $new_file_name;
+        }
+        $this->productModel->update($id, $data);
+        $this->formUpdate();
+    }
+
+    public function delete()
+    {
+
+        $id = $_GET['id'];
+        $result = $this->productModel->detail($id);
+        $nameImg = $result['img'];
+        if ($id) {
+            $this->productModel->delete($id);
+            unlink("./Public/img/product/${nameImg}");
+            $this->index();
+        } else {
+            $this->index();
+        }
     }
 }

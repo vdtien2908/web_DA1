@@ -1,6 +1,34 @@
 <?php
 $page =  strtolower($_REQUEST['controller'])
 ?>
+<div class="form-logout" id="form-logout-box" style="display: none;">
+    <span>Bạn có muốn đăng xuất không ?</span>
+    <div class="form-logout-button">
+        <a href="?controller=login&action=logout" class="logout-button">Có</a>
+        <a href="" class="logout-button" id="form-logout-btn-close">Không</a>
+    </div>
+</div>
+<div class="sidebar-overlay" id="sidebar-overlay" style="display: none;"></div>
+<script>
+const formLogoutBox = document.getElementById('form-logout-box');
+const btnClose = document.getElementById('form-logout-btn-close');
+const sideOverlay = document.getElementById('sidebar-overlay');
+
+function handleLogout() {
+    formLogoutBox.style.display = 'block';
+    sideOverlay.style.display = 'block';
+}
+
+sideOverlay.onclick = function() {
+    formLogoutBox.style.display = 'none';
+    sideOverlay.style.display = 'none';
+}
+
+btnClose.onclick = function() {
+    formLogoutBox.style.display = 'none';
+    sideOverlay.style.display = 'none';
+}
+</script>
 
 <div class="sidebar">
     <div class="logo-content">
@@ -64,11 +92,21 @@ $page =  strtolower($_REQUEST['controller'])
             <div class="profile-details">
                 <img src="./Public/img/img_admin.jpg" alt="" />
                 <div class="name-job">
-                    <div class="name">Administrator</div>
-                    <div class="job"></div>
+                    <div class="name"><?php if (isset($_SESSION['login'])) {
+                                            $nameAdmin = $_SESSION['login']['name'];
+                                        } else {
+                                            $nameAdmin = '';
+                                        }
+                                        if ($nameAdmin == '') {
+                                            echo 'Lỗi tên';
+                                        } else {
+                                            echo $nameAdmin;
+                                        }
+
+                                        ?></div>
                 </div>
             </div>
-            <i class="bx bx-log-out" id="log-out"></i>
+            <i class="bx bx-log-out" id="log-out" onclick="handleLogout();"></i>
         </div>
     </div>
 </div>

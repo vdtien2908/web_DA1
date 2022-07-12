@@ -191,3 +191,62 @@ body {
   width: calc(100% - 240px);
   margin-left: 240px;
 }
+
+.form-logout {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 45%;
+  background-color: #1c3b4d;
+  width: 350px;
+  z-index: 99;
+  border-radius: 6px;
+  padding: 10px;
+  color: #fff;
+}
+
+.form-logout-button {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-logout-button a {
+  font-size: 18px;
+  color: #fff;
+  border-radius: 6px;
+  background-color: aqua;
+  padding: 6px 20px;
+}
+
+.form-logout-button a:hover {
+  opacity: 0.8;
+}
+
+.form-logout-button a:first-child {
+  background-color: red;
+}
+
+.form-logout-button a:last-child {
+  background-color: #ccc;
+}
+
+.form-logout span {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 20px;
+  margin-left: 8px;
+  font-weight: 300;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  z-index: 19;
+  opacity: 0.4;
+}

@@ -20,6 +20,16 @@
 
         <!-- Home Content begin -->
         <div class="home-content">
+
+            <div class="form-confirm-delete" style="display: none;" id="form-confirm-delete-box">
+                <p>Bạn có chắc chắn muốn xóa không ?</p>
+                <div class="form-confirm-delete-btn">
+                    <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-submit">Có</a>
+                    <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-close">Hủy</a>
+                </div>
+            </div>
+            <div class="overlay" id="overlay" style="display:none;"></div>
+
             <div class="home-content-table">
                 <div class="home-content-table_header">
                     <p>Sản phẩm</p>
@@ -70,7 +80,7 @@
                                             </button>
                                         </a>
 
-                                        <a href=" ?controller=product&action=delete">
+                                        <a href="#" onclick="handleDelete(<?php echo $value['id']; ?>)">
                                             <button>
                                                 <i class='bx bx-trash'></i>
                                             </button>
@@ -86,7 +96,28 @@
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
+    <script>
+    const formDeleteBox = document.getElementById('form-confirm-delete-box');
+    const overlay = document.getElementById('overlay');
+    const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
+    const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
+
+    function handleDelete(id) {
+        formDeleteBox.style.display = 'block';
+        overlay.style.display = 'block';
+        btnDeleteSubmit.href = `?controller=product&action=delete&id=${id}`;
+    }
+
+    overlay.onclick = function() {
+        formDeleteBox.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    btnDeleteClose.onclick = function() {
+        formDeleteBox.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+    </script>
 </body>
 
 </html>

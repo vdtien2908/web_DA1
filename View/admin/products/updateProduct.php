@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="form-field add-product">
-                    <textarea type="text" class="form-input"
+                    <textarea type="text" class="form-input" name="description"
                         placeholder=" "><?php echo $product['description'] ?></textarea>
                     <label for=" name" class=" form-label">Mô tả</label>
                 </div>

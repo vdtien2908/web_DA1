@@ -5,6 +5,7 @@ class ManufacturerController extends BaseController
     private $ManufacturerModel;
     public function __construct()
     {
+
         $this->loadModel('ManufacturerModel');
         $this->ManufacturerModel = new ManufacturerModel();
     }

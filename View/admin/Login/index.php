@@ -10,26 +10,30 @@
 </head>
 
 <body>
-    <form action="?controller=home" method="POST">
+    <form action="?controller=login&action=login" method="POST">
         <div class="admin-login-wrap">
             <div class="admin-login">
                 <h1 class="admin-login-heading">
                     Welcome Admin
                 </h1>
                 <div class="form-field">
-                    <input type="text" class="admin-login-input" placeholder=" " name="login-email" />
+                    <input type="text" class="admin-login-input" placeholder=" " name="login-email"
+                        autocomplete="off" />
                     <label for="name" class="admin-login-label">Email</label>
                 </div>
                 <div class="form-field">
-                    <input type="password" class="admin-login-input" placeholder=" " name="login-password" />
-                    <label for="name" class="admin-login-label">Password</label>
+                    <input type="password" class="admin-login-input" placeholder=" " name="login-password"
+                        autocomplete="off" />
+                    <label for="name" class="admin-login-label">Mật khẩu</label>
                 </div>
                 <div class="form-check">
                     <label for="check-password">Lưu mật khẩu</label>
-                    <input type="checkbox" name="checkbox-password" id="check-password">
+                    <input type="checkbox" name="checkbox-password" id="check-password" autocomplete="off">
                 </div>
                 <button class="btn btn-primary admin-login-btn" type="submit">Đăng nhập
                 </button>
+
+
             </div>
         </div>
     </form>
