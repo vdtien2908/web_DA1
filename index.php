@@ -8,6 +8,8 @@ require './Controllers/BaseController.php';
 
 $controllerName = ucfirst(strtolower(($_REQUEST['controller'] ?? 'Error')) . 'Controller');
 $actionName = $_REQUEST['action'] ?? 'index';
+
+// Check Login
 if (empty($_SESSION['login'])) {
     $controllerName = 'LoginController';
     // header("Location: ?controller=login");
@@ -18,9 +20,9 @@ if (empty($_SESSION['login'])) {
 }
 
 
+$urlFile = "./Controllers/${controllerName}.php";
+$checkUrl = $_SERVER['REQUEST_URI'];
 
-
-require "./Controllers/${controllerName}.php";
-
+require "${urlFile}";
 $controllerObject = new $controllerName();
 $controllerObject->$actionName();

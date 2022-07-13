@@ -17,7 +17,6 @@
         <!-- Sidebar begin -->
         <?php include "./View/admin/include/sidebar.php" ?>
         <!-- Sidebar end -->
-
         <!-- Home Content begin -->
         <div class="form-layout-wrap">
             <div class="form-layout-header">
@@ -35,8 +34,8 @@
                         <label for=" name" class=" form-label">Tên</label>
                     </div>
                     <div class="form-field add-product form-child-2">
-                        <input type=" text" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Điện thoại</label>
+                        <input type="password" class="form-input" placeholder=" ">
+                        <label for=" name" class=" form-label">Ngày sinh</label>
                     </div>
                 </div>
                 <div class="form-field-wrap">
@@ -44,9 +43,20 @@
                         <input type="text" class="form-input" placeholder=" ">
                         <label for=" name" class=" form-label">Email</label>
                     </div>
+
                     <div class="form-field add-product form-child-2">
                         <input type=" text" class="form-input" placeholder=" ">
+                        <label for=" name" class=" form-label">Điện thoại</label>
+                    </div>
+                </div>
+                <div class="form-field-wrap">
+                    <div class="form-field add-product form-child-1">
+                        <input type="password" class="form-input" placeholder=" ">
                         <label for=" name" class=" form-label">Mật khẩu</label>
+                    </div>
+                    <div class="form-field add-product form-child-2">
+                        <input type="password" class="form-input" placeholder=" ">
+                        <label for=" name" class=" form-label">Nhập lại mật khẩu</label>
                     </div>
                 </div>
                 <div class="form-field add-product">
@@ -60,6 +70,7 @@
                         <option value="1">Nữ</option>
                     </select>
                 </div>
+
                 <div class="btn-wrap">
                     <button type="submit" class="btn-wrap-child">Nhập</button>
                 </div>
@@ -67,7 +78,6 @@
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>

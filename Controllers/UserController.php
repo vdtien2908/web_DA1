@@ -24,7 +24,7 @@ class UserController extends BaseController
 
     public function update()
     {
-        return $this->view('fontEnd.users.updateUser');
+        return $this->view('admin.users.updateUser');
     }
 
     public function delete()
