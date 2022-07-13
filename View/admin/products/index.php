@@ -60,64 +60,64 @@
                             <?php
                             $number = 1;
                             foreach ($result as $value) : ?>
-                            <tr>
-                                <td>
-                                    <?php echo $number;
+                                <tr>
+                                    <td>
+                                        <?php echo $number;
                                         $number++ ?> </td>
-                                <td><img src="./Public/img/product/<?php echo $value['img'] ?>" alt=""></td>
-                                <td><?php echo $value['name']; ?></td>
-                                <td><?php echo number_format($value['price'], 0, '.', '.'); ?> VND</td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=product&action=show&id=<?php echo $value["id"]; ?>">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=product&action=formUpdate&id=<?php echo $value["id"]; ?>">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
+                                        <td><img src="./Public/img/product/<?php echo $value['img'] ?>" alt=""></td>
+                                        <td><?php echo $value['name']; ?></td>
+                                        <td><?php echo number_format($value['price'], 0, '.', '.'); ?> VND</td>
+                                        <td>
+                                            <div class="button-wrap">
+                                                <a href="?controller=product&action=show&id=<?php echo $value["id"]; ?>">
+                                                    <button>
+                                                        <i class='bx bx-show'></i>
+                                                    </button>
+                                                </a>
+                                                <a href="?controller=product&action=formUpdate&id=<?php echo $value["id"]; ?>">
+                                                    <button>
+                                                        <i class='bx bxs-edit'></i>
+                                                    </button>
+                                                </a>
 
-                                        <a href="#" onclick="handleDelete(<?php echo $value['id']; ?>)">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                                                <a href="#" onclick="handleDelete(<?php echo $value['id']; ?>)">
+                                                    <button>
+                                                        <i class='bx bx-trash'></i>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!-- Home Content begin -->
         </div>
-        <!-- Home Content begin -->
-    </div>
-    <script>
-    const formDeleteBox = document.getElementById('form-confirm-delete-box');
-    const overlay = document.getElementById('overlay');
-    const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
-    const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
+        <script>
+            const formDeleteBox = document.getElementById('form-confirm-delete-box');
+            const overlay = document.getElementById('overlay');
+            const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
+            const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
 
-    function handleDelete(id) {
-        formDeleteBox.style.display = 'block';
-        overlay.style.display = 'block';
-        btnDeleteSubmit.href = `?controller=product&action=delete&id=${id}`;
-    }
+            function handleDelete(id) {
+                formDeleteBox.style.display = 'block';
+                overlay.style.display = 'block';
+                btnDeleteSubmit.href = `?controller=product&action=delete&id=${id}`;
+            }
 
-    overlay.onclick = function() {
-        formDeleteBox.style.display = 'none';
-        overlay.style.display = 'none';
-    }
+            overlay.onclick = function() {
+                formDeleteBox.style.display = 'none';
+                overlay.style.display = 'none';
+            }
 
-    btnDeleteClose.onclick = function() {
-        formDeleteBox.style.display = 'none';
-        overlay.style.display = 'none';
-    }
-    </script>
-</body>
+            btnDeleteClose.onclick = function() {
+                formDeleteBox.style.display = 'none';
+                overlay.style.display = 'none';
+            }
+        </script>
+    </body>
 
-</html>
+    </html>

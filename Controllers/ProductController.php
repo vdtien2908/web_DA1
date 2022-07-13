@@ -146,7 +146,9 @@ class ProductController extends BaseController
             if ($size <= $size_allow) {
                 $upload = move_uploaded_file($file['tmp_name'], './Public/img/product/' . $new_file_name);
                 if ($upload) {
-                    unlink("./Public/img/product/${nameImg}");
+                    if (file_exists("./Public/img/product/${nameImg}")) {
+                        unlink("./Public/img/product/${nameImg}");
+                    }
                 }
                 if (!$upload) {
                     $error[] = 'error upload';

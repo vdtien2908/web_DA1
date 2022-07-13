@@ -39,11 +39,17 @@
                         </span>
                         <span class=info-details-child-text>
                             0333669832
-                            <span class=info-details-child-text-label>Điện thoại</span>
+                            <span class=info-details-child-text-label>Giới tính</span>
+                        </span>
+                    </div>
+                    <div class="info-details-child">
+                        <span class=info-details-child-text>
+                            Vũ Đức Tiến
+                            <span class=info-details-child-text-label>Ngày sinh</span>
                         </span>
                         <span class=info-details-child-text>
-                            Nam
-                            <span class=info-details-child-text-label>Giới tính</span>
+                            0333669832
+                            <span class=info-details-child-text-label>Số điện thoại</span>
                         </span>
                     </div>
                     <div class="info-details-child">
@@ -62,7 +68,12 @@
                             <span class=info-details-child-text-label>Địa chỉ</span>
                         </span>
                     </div>
-                    <a href="?controller=user&action=update" class="info-details-link">Cập nhật</a>
+                    <div class="info-details-link-wrap">
+                        <a href="?controller=user&action=update" class="info-details-link">
+                            Sửa thông tin
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <!-- Home Content begin -->

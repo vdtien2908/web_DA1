@@ -113,7 +113,7 @@ button {
 
 .home-content-table_section tbody td button:hover {
   opacity: 0.8;
-  color: #ccc;
+  color: #000;
 }
 
 .home-content-table_section tbody td .button-wrap {
@@ -129,7 +129,7 @@ button {
   align-items: center;
   margin: 0 2px;
   color: #fff;
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
 }
 
 .home-content-table_section tbody td button i {
@@ -237,8 +237,6 @@ button {
   color: #112b3c;
   background-color: #fff;
   border-radius: 4px;
-  min-width: 200px;
-  margin-bottom: 10px;
 }
 
 .form-select-child:focus {
@@ -367,18 +365,28 @@ button {
   background-color: #fff;
 }
 
+.info-details-link-wrap {
+  width: 100%;
+  text-align: center;
+  margin-top: 26px;
+}
+
 .info-details-link {
-  margin-top: 30px;
-  display: block;
   font-size: 18px;
   padding: 10px 20px;
-  background-color: #0298cf;
+  background-color: #999;
   color: #fff;
   border-radius: 6px;
-  margin-left: auto;
-  max-width: 120px;
   text-align: center;
-  transition: 0.2s ease;
+  transition: 0.4s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.info-details-link i {
+  font-size: 24px;
 }
 
 .info-details-link:hover {
