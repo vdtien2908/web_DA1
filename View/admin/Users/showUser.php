@@ -28,43 +28,52 @@
                         Quay lại
                     </a>
                 </div>
+
                 <div class="info-details">
                     <div class="info-details-heading">
                         <p>Thông tin</p>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>
-                            Vũ Đức Tiến
+                            <?php echo $user['name']; ?>
                             <span class=info-details-child-text-label>Tên Khách hàng</span>
                         </span>
                         <span class=info-details-child-text>
-                            0333669832
+                            <?php if ($user['gender'] == 1) {
+                                echo 'Nam';
+                            }
+                            if ($user['gender'] == 0) {
+                                echo 'Nữ';
+                            }
+                            ?>
                             <span class=info-details-child-text-label>Giới tính</span>
                         </span>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>
-                            Vũ Đức Tiến
+                            <?php $date = strtotime($value['birthday']);
+                            $date = date('d/m/Y', $date);
+                            echo $date; ?>
                             <span class=info-details-child-text-label>Ngày sinh</span>
                         </span>
                         <span class=info-details-child-text>
-                            0333669832
+                            <?php echo $user['phone']; ?>
                             <span class=info-details-child-text-label>Số điện thoại</span>
                         </span>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>
-                            vuductien2908@gmail.com
+                            <?php echo $user['email']; ?>
                             <span class=info-details-child-text-label>Email</span>
                         </span>
                         <span class=info-details-child-text>
-                            0333669832
+                            <?php echo $user['password']; ?>
                             <span class=info-details-child-text-label>Mật khẩu</span>
                         </span>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>
-                            Ninh Kiều, Cần Thơ
+                            <?php echo $user['address']; ?>
                             <span class=info-details-child-text-label>Địa chỉ</span>
                         </span>
                     </div>
@@ -75,6 +84,7 @@
                         </a>
                     </div>
                 </div>
+
             </div>
             <!-- Home Content begin -->
         </div>

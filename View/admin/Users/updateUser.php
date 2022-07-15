@@ -35,7 +35,7 @@
                         <label for=" name" class=" form-label">Tên</label>
                     </div>
                     <div class="form-field add-product form-child-2">
-                        <input type="password" class="form-input" placeholder=" ">
+                        <input type="date" class="form-input" placeholder=" " style="color: #999">
                         <label for=" name" class=" form-label">Ngày sinh</label>
                     </div>
                 </div>

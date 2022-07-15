@@ -26,49 +26,74 @@
                     Quay lại
                 </a>
             </div>
-            <form class="form-layout">
+            <form class="form-layout" action="?controller=user&action=create" method="POST" id='form-create-user'>
                 <p>Nhập Thông tin</p>
                 <div class="form-field-wrap">
-                    <div class="form-field add-product form-child-1">
-                        <input type="text" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Tên</label>
+                    <div class="add-product form-child-1">
+                        <div class='form-field'>
+                            <!--  .message_error -->
+                            <input id='name' type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Tên</label>
+                        </div>
+                        <!-- form-message -->
+                        <span class="form-messages"></span>
                     </div>
-                    <div class="form-field add-product form-child-2">
-                        <input type="password" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Ngày sinh</label>
-                    </div>
-                </div>
-                <div class="form-field-wrap">
-                    <div class="form-field add-product form-child-1">
-                        <input type="text" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Email</label>
-                    </div>
-
-                    <div class="form-field add-product form-child-2">
-                        <input type=" text" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Điện thoại</label>
+                    <div class="add-product form-child-2">
+                        <div class='form-field'>
+                            <input id='date' type="date" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Ngày sinh</label>
+                        </div>
+                        <span class="form-messages"></span>
                     </div>
                 </div>
                 <div class="form-field-wrap">
-                    <div class="form-field add-product form-child-1">
-                        <input type="password" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Mật khẩu</label>
+                    <div class="add-product form-child-1">
+                        <div class='form-field'>
+                            <input id='email' type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Email</label>
+                        </div>
+                        <span class="form-messages"></span>
                     </div>
-                    <div class="form-field add-product form-child-2">
-                        <input type="password" class="form-input" placeholder=" ">
-                        <label for=" name" class=" form-label">Nhập lại mật khẩu</label>
+                    <div class="add-product form-child-2">
+                        <div class='form-field'>
+                            <input id='phone' type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Số điện thoại</label>
+                        </div>
+                        <span class="form-messages"></span>
                     </div>
                 </div>
-                <div class="form-field add-product">
-                    <textarea cols="9" type="text" class="form-input" placeholder=" "></textarea>
-                    <label for=" name" class=" form-label">Địa chỉ</label>
+                <div class="form-field-wrap">
+                    <div class="add-product form-child-1">
+                        <div class='form-field'>
+                            <input id='password' type="password" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Mật khẩu</label>
+                        </div>
+                        <span class="form-messages"></span>
+                    </div>
+                    <div class="add-product form-child-2">
+                        <div class='form-field'>
+                            <input id="password_r" type="password" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <label for=" name" class=" form-label">Nhập lại mật khẩu</label>
+                        </div>
+                        <span class="form-messages"></span>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-field" style="height: 80px;">
+                        <textarea id='address' class="form-input" placeholder=" " name="address" autocomplete="off"></textarea>
+                        <label for=" name" class=" form-label">Địa chỉ</label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
                 <div class="form-select">
-                    <select name="manufacturer" class="form-select-child">
-                        <option selected disabled>-- Giới tính --</option>
-                        <option value="0">Nam</option>
-                        <option value="1">Nữ</option>
-                    </select>
+                    <div>
+                        <select id='gender' class="form-select-child " name="gender">
+                            <option value=" " selected disabled>-- Giới tính --</option>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
 
                 <div class="btn-wrap">
@@ -78,6 +103,26 @@
         </div>
         <!-- Home Content begin -->
     </div>
+    <script src="./Public/js/validator.js"></script>
+    <script>
+        validator({
+            form: '#form-create-user',
+            errorSelector: '.form-messages',
+            rules: [
+                validator.isRequired('#name', 'Vui lòng nhập tên đầy đủ'),
+                validator.isRequired('#phone', 'Bạn chưa nhập số điện thoại'),
+                validator.isRequired('#address', 'Bạn chưa nhập địa chỉ'),
+                validator.isRequired('#date', 'Bạn chưa nhập ngày sinh'),
+                validator.minLength('#password', 6),
+                validator.isCheckPass('#password_r', function() {
+                    return document.querySelector('#form-create-user #password').value;
+                }, 'Mật khẩu nhập lại không chính xác'),
+                validator.isEmail('#email'),
+                validator.isRequired('#gender', 'Bạn chưa chọn giới tính')
+
+            ]
+        });
+    </script>
 </body>
 
 </html>
