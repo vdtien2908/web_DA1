@@ -107,6 +107,7 @@ btnClose.onclick = function() {
                 </div>
             </div>
             <i class="bx bx-log-out" id="log-out" onclick="handleLogout();"></i>
+
         </div>
     </div>
 </div>

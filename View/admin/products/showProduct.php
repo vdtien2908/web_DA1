@@ -55,10 +55,15 @@
                         </div>
                         <div class="product-detail-time">
                             <p class="product-detail-create_at">Thời gian tạo:
-                                <?php echo $value['create_at']; ?></p>
+                                <?php $date = strtotime($value['create_at']);
+                                    $date = date('d/m/Y H:i:s', $date);
+                                    echo $date;
+                                    ?>
                             </p>
                             <?php if ($value['update_at']) {
-                                    echo "<p class='product-detail-update_at'>Cập nhật lần cuối: " . $value['update_at'] . "</p>";
+                                    $date = strtotime($value['update_at']);
+                                    $date = date('d/m/Y H:i:s', $date);
+                                    echo "<p class='product-detail-update_at'>Cập nhật lần cuối: " . $date . "</p>";
                                 } ?>
                         </div>
                     </div>

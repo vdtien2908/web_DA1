@@ -6,7 +6,7 @@ class ProductController extends BaseController
 
     public function __construct()
     {
-        $this->loadModel('ProductMOdel');
+        $this->loadModel('ProductModel');
         $this->productModel = new ProductModel();
     }
 
@@ -179,6 +179,10 @@ class ProductController extends BaseController
         if ($file && $file['name']) {
             $data['img'] = $new_file_name;
         }
+
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        $date = date('Y-m-d H:i:s');
+        $data['update_at'] = $date;
         $this->productModel->update($id, $data);
         $this->formUpdate();
     }

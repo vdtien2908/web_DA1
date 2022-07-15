@@ -35,29 +35,38 @@
                                 <th>STT</th>
                                 <th>Tên</th>
                                 <th>Ngày sinh</th>
-                                <th>Gmail</th>
+                                <th>Điện thoại</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $number = 1;
+                            foreach ($user as $value) : ?>
                             <tr>
-                                <td>1</td>
-                                <td>Vũ Đức Tiến</td>
-                                <td>29-08-2002</td>
-                                <td>vuductien@gmail.com</td>
+                                <td><?php echo $number;
+                                        $number++ ?></td>
+                                <td><?php echo $value['name'] ?></td>
+                                <td>
+                                    <?php $date = strtotime($value['birthday']);
+                                        $date = date('d/m/Y', $date);
+                                        echo $date;
+                                        ?>
+                                </td>
+                                <td><?php echo $value['phone'] ?></td>
                                 <td>
                                     <div class="button-wrap">
-                                        <a href="?controller=user&action=show" class="">
+                                        <a href="?controller=user&action=show&id=<?php echo $value['id'] ?>" class="">
                                             <button>
                                                 <i class='bx bx-show'></i>
                                             </button>
                                         </a>
-                                        <a href="?controller=user&action=update">
+                                        <a href="?controller=user&action=update&<?php echo $value['id'] ?>">
                                             <button>
                                                 <i class='bx bxs-edit'></i>
                                             </button>
                                         </a>
-                                        <a href="?controller=user&action=delete">
+                                        <a href="?controller=user&action=delete&id=<?php echo $value['id'] ?>">
                                             <button>
                                                 <i class='bx bx-trash'></i>
                                             </button>
@@ -65,7 +74,7 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
