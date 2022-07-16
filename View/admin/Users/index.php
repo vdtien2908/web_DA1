@@ -20,6 +20,15 @@
 
         <!-- Home Content begin -->
         <div class="home-content">
+            <div class="form-confirm-delete" style="display: none;" id="form-confirm-delete-box">
+                <p>Bạn có chắc chắn muốn xóa không ?</p>
+                <div class="form-confirm-delete-btn">
+                    <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-submit">Có</a>
+                    <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-close">Hủy</a>
+                </div>
+            </div>
+            <div class="overlay" id="overlay" style="display:none;"></div>
+
             <div class="home-content-table">
                 <div class="home-content-table_header">
                     <p>Khách hàng</p>
@@ -50,37 +59,37 @@
                             <?php
                             $number = 1;
                             foreach ($user as $value) : ?>
-                            <tr>
-                                <td><?php echo $number;
+                                <tr>
+                                    <td><?php echo $number;
                                         $number++ ?></td>
-                                <td><?php echo $value['name'] ?></td>
-                                <td>
-                                    <?php $date = strtotime($value['birthday']);
+                                    <td><?php echo $value['name'] ?></td>
+                                    <td>
+                                        <?php $date = strtotime($value['birthday']);
                                         $date = date('d/m/Y', $date);
                                         echo $date;
                                         ?>
-                                </td>
-                                <td><?php echo $value['phone'] ?></td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a href="?controller=user&action=show&id=<?php echo $value['id'] ?>" class="">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=user&action=update&<?php echo $value['id'] ?>">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=user&action=delete&id=<?php echo $value['id'] ?>">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td><?php echo $value['phone'] ?></td>
+                                    <td>
+                                        <div class="button-wrap">
+                                            <a href="?controller=user&action=show&id=<?php echo $value['id'] ?>" class="">
+                                                <button>
+                                                    <i class='bx bx-show'></i>
+                                                </button>
+                                            </a>
+                                            <a href="?controller=user&action=formUpdate&id=<?php echo $value['id'] ?>">
+                                                <button>
+                                                    <i class='bx bxs-edit'></i>
+                                                </button>
+                                            </a>
+                                            <a onclick=handleDelete(<?php echo $value['id'] ?>)>
+                                                <button>
+                                                    <i class='bx bx-trash'></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -89,6 +98,28 @@
         </div>
         <!-- Home Content begin -->
     </div>
+    <script>
+        const formDeleteBox = document.getElementById('form-confirm-delete-box');
+        const overlay = document.getElementById('overlay');
+        const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
+        const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
+
+        function handleDelete(id) {
+            formDeleteBox.style.display = 'block';
+            overlay.style.display = 'block';
+            btnDeleteSubmit.href = `?controller=user&action=delete&id=${id}`;
+        }
+
+        overlay.onclick = function() {
+            formDeleteBox.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        btnDeleteClose.onclick = function() {
+            formDeleteBox.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

@@ -21,6 +21,12 @@ class UserModel extends BaseModel
         return $this->getByQuery($sql);
     }
 
+    public function show($id)
+    {
+        return $this->find(self::TABLE, $id);
+    }
+
+
     public function store($data)
     {
         return $this->create(self::TABLE, $data);

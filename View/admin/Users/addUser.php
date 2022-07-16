@@ -40,7 +40,7 @@
                     </div>
                     <div class="add-product form-child-2">
                         <div class='form-field'>
-                            <input id='date' type="date" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <input id='date' type="date" class="form-input" placeholder=" " name="birthday" autocomplete="off">
                             <label for=" name" class=" form-label">Ngày sinh</label>
                         </div>
                         <span class="form-messages"></span>
@@ -49,14 +49,14 @@
                 <div class="form-field-wrap">
                     <div class="add-product form-child-1">
                         <div class='form-field'>
-                            <input id='email' type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <input id='email' type="text" class="form-input" placeholder=" " name="email" autocomplete="off">
                             <label for=" name" class=" form-label">Email</label>
                         </div>
                         <span class="form-messages"></span>
                     </div>
                     <div class="add-product form-child-2">
                         <div class='form-field'>
-                            <input id='phone' type="text" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <input id='phone' type="text" class="form-input" placeholder=" " name="phone" autocomplete="off">
                             <label for=" name" class=" form-label">Số điện thoại</label>
                         </div>
                         <span class="form-messages"></span>
@@ -65,14 +65,14 @@
                 <div class="form-field-wrap">
                     <div class="add-product form-child-1">
                         <div class='form-field'>
-                            <input id='password' type="password" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <input id='password' type="password" class="form-input" placeholder=" " name="password" autocomplete="off">
                             <label for=" name" class=" form-label">Mật khẩu</label>
                         </div>
                         <span class="form-messages"></span>
                     </div>
                     <div class="add-product form-child-2">
                         <div class='form-field'>
-                            <input id="password_r" type="password" class="form-input" placeholder=" " name="name" autocomplete="off">
+                            <input id="password_r" type="password" class="form-input" placeholder=" " name="password_r" autocomplete="off">
                             <label for=" name" class=" form-label">Nhập lại mật khẩu</label>
                         </div>
                         <span class="form-messages"></span>
@@ -109,16 +109,23 @@
             form: '#form-create-user',
             errorSelector: '.form-messages',
             rules: [
+                // isRequired
                 validator.isRequired('#name', 'Vui lòng nhập tên đầy đủ'),
                 validator.isRequired('#phone', 'Bạn chưa nhập số điện thoại'),
                 validator.isRequired('#address', 'Bạn chưa nhập địa chỉ'),
                 validator.isRequired('#date', 'Bạn chưa nhập ngày sinh'),
+                validator.isRequired('#password', 'Bạn chưa nhập  mật khẩu'),
+                validator.isRequired('#password_r', 'Bạn chưa nhập lại mật khẩu'),
+                validator.isRequired('#gender', 'Bạn chưa chọn giới tính'),
+                // isMinLength
+                validator.minLength('#phone', 10, 'Số điện thoại ít nhất 10 số'),
                 validator.minLength('#password', 6),
+                // isCheck
+                validator.isPhone('#phone'),
                 validator.isCheckPass('#password_r', function() {
                     return document.querySelector('#form-create-user #password').value;
                 }, 'Mật khẩu nhập lại không chính xác'),
                 validator.isEmail('#email'),
-                validator.isRequired('#gender', 'Bạn chưa chọn giới tính')
 
             ]
         });
