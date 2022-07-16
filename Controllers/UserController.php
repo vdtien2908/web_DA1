@@ -31,8 +31,12 @@ class UserController extends BaseController
     public function find()
     {
         $name = $_POST['name'];
-        $user = $this->userModel->findByName($name);
-        $this->view('admin.users.searchUser', ['user' => $user]);
+        if ($name) {
+            $user = $this->userModel->findByName($name);
+            $this->view('admin.users.searchUser', ['user' => $user]);
+        } else {
+            header("location: ?controller=user ");
+        }
     }
 
     public function formCreate()
@@ -47,34 +51,73 @@ class UserController extends BaseController
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $password = $_POST['password'];
-        $password_r = $_POST['password_r'];
         $address = $_POST['address'];
         $gender = $_POST['gender'];
-        echo $name;
-        echo "<br>";
-        echo $birthday;
-        echo "<br>";
-        echo $email;
-        echo "<br>";
-        echo $phone;
-        echo "<br>";
-        echo $password;
-        echo "<br>";
-        echo $password_r;
-        echo "<br>";
-        echo $address;
-        echo "<br>";
-        echo $gender;
-        echo "<br>";
-        return $this->view('admin.users.test');
+
+        // format Data
+        $date = date('Y-m-d', strtotime($birthday));
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+
+
+        $data = ['name' => $name, 'birthday' => $date, 'email' => $email, 'phone' => $phone, 'password' => $hashed_password, 'address' => $address, 'gender' => $gender];
+        $this->userModel->store($data);
+        header("location:?controller=User");
+    }
+
+    public function formUpdate()
+    {
+        $id = $_GET['id'];
+        if ($id) {
+            $user = $this->userModel->show($id);
+            $this->view('admin.users.updateUser', ['user' => $user]);
+        } else {
+            header("location:?controller=User");
+        }
     }
 
     public function update()
     {
-        return $this->view('admin.users.updateUser');
+        $id = $_GET['id'];
+        $name = $_POST['name'];
+        $birthday = $_POST['birthday'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $gender = $_POST['gender'];
+        $data = [];
+        if ($id) {
+            $user = $this->userModel->show($id);
+            if ($name != $user['name']) {
+                $data['name'] = $name;
+            }
+            if ($birthday != $user['birthday']) {
+                $data['birthday'] = $birthday;
+            }
+            if ($email != $user['email']) {
+                $data['email'] = $email;
+            }
+            if ($phone != $user['phone']) {
+                $data['phone'] = $phone;
+            }
+            if ($address != $user['address']) {
+                $data['address'] = $address;
+            }
+            if ($gender != $user['gender']) {
+                $data['gender'] = $gender;
+            }
+
+            $this->userModel->update($id, $data);
+            $this->formUpdate();
+        }
     }
 
     public function delete()
     {
+        $id = $_GET['id'];
+        if ($id) {
+            $this->userModel->delete($id);
+            header('Location: ?controller=user');
+        }
     }
 }

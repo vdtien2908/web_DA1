@@ -31,67 +31,100 @@
             $category_id = $product['category_id'];
             $manufacturer_id = $product['manufacturer_id'];
             ?>
-            <form class="form-layout" action="?controller=product&action=update&id=<?php echo $product['id'] ?>"
-                method="POST" enctype="multipart/form-data">
-                <p>Cập nhật sản phẩm</p>
+            <form class="form-layout" action="?controller=product&action=update&id=<?php echo $product['id'] ?>" method="POST" enctype="multipart/form-data" id="form-product-update">
+                <p>Nhập sản phẩm</p>
                 <div class="form-field-wrap">
-                    <div class="form-field add-product form-child-1">
-                        <input type="text" class="form-input" placeholder=" " autocomplete="off" name='name'
-                            value="<?php echo $product['name'] ?>">
-                        <label for=" name" class=" form-label">Tên</label>
+                    <div class="add-product form-child-1">
+                        <div class="form-field">
+                            <input type="text" class="form-input" placeholder=" " name="name" autocomplete="off" id="name" value="<?php echo $product['name'] ?>">
+                            <label for=" name" class=" form-label">Tên</label>
+                        </div>
+                        <span class="form-messages"></span>
                     </div>
-                    <div class="form-field add-product form-child-2">
-                        <input type=" text" class="form-input" placeholder=" " autocomplete="off" name=price
-                            value="<?php echo $product['price'] ?>">
-                        <label for=" name" class=" form-label">Giá</label>
+                    <div class="add-product form-child-2">
+                        <div class="form-field">
+                            <input type=" text" class="form-input" placeholder=" " name="price" autocomplete="off" id="price" value="<?php echo $product['price'] ?>">
+                            <label for=" name" class=" form-label">Giá</label>
+                        </div>
+                        <span class="form-messages"></span>
                     </div>
                 </div>
-                <div class="form-field add-product">
-                    <textarea type="text" class="form-input" name="description"
-                        placeholder=" "><?php echo $product['description'] ?></textarea>
-                    <label for=" name" class=" form-label">Mô tả</label>
+                <div class="add-product">
+                    <div class="form-field" style="height: 80px;">
+                        <textarea type="text" class="form-input" placeholder=" " name="description" id="description"><?php echo $product['description'] ?></textarea>
+                        <label for=" name" class=" form-label">Mô tả</label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
-                <div class="form-select">
-                    <select name="manufacturer" class="form-select-child">
-                        <option selected disabled>-- Nhà cung cấp --</option>
-                        <?php foreach ($manufacturer as $value) : ?>
-                        <option value="<?php echo $value['id'] ?>" <?php if ($value['id'] == $manufacturer_id) {
-                                                                            echo 'selected';
-                                                                        } ?>>
-                            <?php echo $value['name'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <select name="category" class="form-select-child">
-                        <option selected disabled>-- Danh mục --</option>
-                        <?php foreach ($category as $value) : ?>
-                        <option value="<?php echo $value['id'] ?>" <?php if ($value['id'] == $category_id) {
-                                                                            echo 'selected';
-                                                                        } ?>>
-                            <?php echo $value['name'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="form-select-wrap">
+                    <div class="form-select">
+                        <div>
+                            <select name="manufacturer" class="form-select-child" id="manufacturer">
+                                <option selected disabled value=" ">-- Nhà cung cấp --</option>
+                                <?php foreach ($manufacturer as $value) : ?>
+                                    <option value="<?php echo $value['id'] ?>" <?php if ($value['id'] == $manufacturer_id) {
+                                                                                    echo 'selected';
+                                                                                } ?>>
+                                        <?php echo $value['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <span class="form-messages"></span>
+                    </div>
+                    <div class="form-select">
+                        <div>
+                            <select name="category" class="form-select-child" id="category">
+                                <option selected disabled value=" ">-- Danh mục --</option>
+                                <?php foreach ($category as $value) : ?>
+                                    <option value="<?php echo $value['id'] ?>" <?php if ($value['id'] == $category_id) {
+                                                                                    echo 'selected';
+                                                                                } ?>>
+                                        <?php echo $value['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <span class="form-messages"></span>
+                    </div>
                 </div>
-                <div class="form-file-wrap">
-                    <img id="blah" src="./Public/img/product/<?php echo $product['img'] ?>" alt="Hình ảnh" />
-                    <input type="file" id="imgInp" accept="image/*" name="file">
-                    <label for="imgInp" class="form-label-file">
-                        <i class=' bx bx-image'></i>
-                    </label>
+                <div>
+                    <div class="form-file-wrap">
+                        <img id="blah" src="./Public/img/product/<?php echo $product['img'] ?>" alt="Hình ảnh" />
+                        <input type="file" id="imgInp" accept="image/*" name="file">
+                        <label for="imgInp" class="form-label-file">
+                            <i class='bx bx-image'></i>
+                        </label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
                 <div class="btn-wrap">
-                    <button type="submit" class="btn-wrap-child">Cập nhật</button>
+                    <button type="submit" class="btn-wrap-child">Nhập</button>
                 </div>
             </form>
         </div>
         <!-- Home Content begin -->
     </div>
     <script>
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-            blah.src = URL.createObjectURL(file);
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file);
+            }
         }
-    }
+    </script>
+    <script src="./Public/js/validator.js"></script>
+    <script>
+        validator({
+            form: '#form-product-update',
+            errorSelector: '.form-messages',
+            rules: [
+                // isRequired
+                validator.isRequired('#name', 'Vui lòng nhập tên sản phẩm'),
+                validator.isRequired('#price', 'Bạn chưa nhập giá của sản phẩm'),
+                validator.isRequired('#description', 'Bạn chưa nhập thông tin mô tả'),
+                validator.isRequired('#manufacturer', 'Bạn chưa chọn nhà sản xuất'),
+                validator.isRequired('#category', 'Bạn chưa chọn danh mục cho sản phẩm'),
+            ]
+        });
     </script>
 </body>
 

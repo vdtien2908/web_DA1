@@ -22,7 +22,6 @@ class LoginController extends BaseController
         if ($result) {
             if ($pass == $result['password']) {
                 $_SESSION['login'] = $result;
-                print_r($_SESSION['login']);
                 header('Location:?controller=home');
             } else {
                 echo 'sai mật khẩu';

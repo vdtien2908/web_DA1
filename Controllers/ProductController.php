@@ -26,7 +26,7 @@ class ProductController extends BaseController
             $result = $this->productModel->searchName($value);
             $this->view('admin.products.searchProduct', ['result' => $result]);
         } else {
-            $this->index();
+            header('Location: ?controller=product');
         }
     }
 
@@ -90,12 +90,12 @@ class ProductController extends BaseController
             $error[] = 'ext_error';
         }
 
-        if ($name || $price || $des || $category_id || $manufacturer_id) {
+        if ($file && $file['name']) {
             $data = ['name' => $name, 'price' => $price, 'description' => $des, 'img' => $new_file_name, 'category_id' => $category_id, 'manufacturer_id' => $manufacturer_id];
             $this->productModel->store($data);
             $this->index();
         } else {
-            $this->index();
+            header("Location: ?controller=product&action=formCreate");
         }
     }
 

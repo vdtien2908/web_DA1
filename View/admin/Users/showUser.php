@@ -66,10 +66,6 @@
                             <?php echo $user['email']; ?>
                             <span class=info-details-child-text-label>Email</span>
                         </span>
-                        <span class=info-details-child-text>
-                            <?php echo $user['password']; ?>
-                            <span class=info-details-child-text-label>Mật khẩu</span>
-                        </span>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>
@@ -78,7 +74,7 @@
                         </span>
                     </div>
                     <div class="info-details-link-wrap">
-                        <a href="?controller=user&action=update" class="info-details-link">
+                        <a href="?controller=user&action=formUpdate&id=<?php echo $user['id'] ?>" class="info-details-link">
                             Sửa thông tin
                             <i class='bx bx-right-arrow-alt'></i>
                         </a>
@@ -88,7 +84,6 @@
             </div>
             <!-- Home Content begin -->
         </div>
-        <script src="./js/main.js"></script>
 </body>
 
 </html>

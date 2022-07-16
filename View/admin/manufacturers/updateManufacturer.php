@@ -27,33 +27,55 @@
                     Quay lại
                 </a>
             </div>
-
-            <form action="?controller=manufacturer&action=saveUpdate&id=<?php echo $result['id']; ?>" method="POST"
-                class="form-layout">
-                <p>Cập Nhật thông tin nhà sản xuất</p>
-                <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['name']; ?>"
-                        name="name">
-                    <label for=" name" class=" form-label">Tên</label>
+            <form action="?controller=manufacturer&action=saveUpdate&id=<?php echo $result['id']; ?>" class="form-layout" method="POST" id="form-update-manufacturer">
+                <p>Cập nhật thông tin nhà sản xuất</p>
+                <div class="mb-8">
+                    <div class=" form-field">
+                        <input type="text" class="form-input" placeholder=" " name="name" autocomplete="off" id="name" value="<?php echo $result['name']; ?>">
+                        <label for=" name" class=" form-label">Tên</label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
-                <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['phone']; ?>"
-                        name="phone">
-                    <label for=" name" class=" form-label">Số điện thoại</label>
+                <div class="mb-8">
+                    <div class="form-field">
+                        <input type="text" class="form-input" placeholder=" " name="phone" autocomplete="off" id='phone' value="<?php echo $result['phone']; ?>">
+                        <label for=" name" class=" form-label">Số điện thoại</label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
-                <div class="form-field">
-                    <input type="text" class="form-input" placeholder=" " value="<?php echo $result['address']; ?>"
-                        name="address">
-                    <label for=" name" class=" form-label">Địa chỉ</label>
+                <div class="mb-8">
+                    <div class="form-field">
+                        <input type="text" class="form-input" placeholder=" " name="address" autocomplete="off" id="address" value="<?php echo $result['address']; ?>">
+                        <label for=" name" class=" form-label">Địa chỉ</label>
+                    </div>
+                    <span class="form-messages"></span>
                 </div>
 
                 <div class="btn-wrap">
                     <button type="submit" class="btn-wrap-child">Cập nhật</button>
                 </div>
             </form>
+
         </div>
         <!-- Home Content begin -->
     </div>
+    <script src="./Public/js/validator.js"></script>
+    <script>
+        validator({
+            form: '#form-update-manufacturer',
+            errorSelector: '.form-messages',
+            rules: [
+                // isRequired
+                validator.isRequired('#name', 'Vui lòng nhập tên đầy đủ'),
+                validator.isRequired('#phone', 'Bạn chưa nhập số điện thoại'),
+                validator.isRequired('#address', 'Bạn chưa nhập địa chỉ'),
+
+                // isCheck
+                validator.isPhone('#phone'),
+
+            ]
+        });
+    </script>
 </body>
 
 </html>
