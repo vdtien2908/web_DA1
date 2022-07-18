@@ -22,55 +22,60 @@
         <div class="home-content">
             <div class="home-content-table">
                 <div class="home-content-table_header">
-                    <p>Chi tiết thông tin</p>
+                    <p>Chi tiết hóa đơn</p>
                     <a href="?controller=order" class="home-content-table_header-link">
                         <i class='bx bx-arrow-back'></i>
                         Quay lại
                     </a>
                 </div>
-                <div class="info-details">
-                    <div class="info-details-heading">
-                        <p>Thông tin</p>
+                <div class="info-detail">
+                    <div class="order-id-wrap">
+                        <h4 class="order-id">Đơn hàng #<?php echo $order['id'] ?> <span>Chờ duyệt</span></h4>
+                        <h4 class="order-id">Thời gian đặt: <?php echo $order['time'] ?> </h4>
                     </div>
-                    <div class="info-details-child">
-                        <span class=info-details-child-text>
-                            Vũ Đức Tiến
-                            <span class=info-details-child-text-label>Tên người nhận</span>
-                        </span>
-                        <span class=info-details-child-text>
-                            0333669832
-                            <span class=info-details-child-text-label>Điện thoại</span>
-                        </span>
-                    </div>
-                    <div class="info-details-child">
-                        <span class=info-details-child-text>
-                            29-08-2002
-                            <span class=info-details-child-text-label>Thời gian đặt</span>
-                        </span>
-                        <span class=info-details-child-text>
-                            Mới đặt
-                            <span class=info-details-child-text-label>Trạng thái</span>
-                        </span>
-                    </div>
-                    <div class="info-details-child">
-                        <span class=info-details-child-text>
-                            Giao vào buổi trưa
-                            <span class=info-details-child-text-label>Ghi chú</span>
-                        </span>
-                    </div>
+                    <div class="home-content-table_section home-content-table-order_details">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="order-item-product">STT</th>
+                                    <th class="order-item-product">Hình ảnh</th>
+                                    <th class="order-item-product">Tên sản phẩm</th>
+                                    <th class="order-item-product">Số lượng</th>
+                                    <th class="order-item-product">Giá</th>
+                                    <th class="order-item-product">Thành tiền</th>
 
-                    <div class="info-details-child">
-                        <span class=info-details-child-text>
-                            Ninh Kiều, Cần Thơ
-                            <span class=info-details-child-text-label>Địa chỉ</span>
-                        </span>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($table as $value) : ?>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><img src="./Public/img/product/<?php echo $value['img'] ?>" alt=""></td>
+                                        <td><?php echo $value['name'] ?></td>
+                                        <td><?php echo $value['quantity'] ?></td>
+                                        <td><?php echo $value['price'] ?></td>
+                                        <td><?php echo $value['total'] ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
-                    <a href="?controller=user&action=update" class="info-details-link">Cập nhật</a>
+                    <div class="order-info-receive-wrap">
+                        <div class="order-info-receive">
+                            <span class="order-info-receive-text"><span>Tên người nhận:</span> <?php echo $order['name_receive'] ?> </span>
+                            <span class="order-info-receive-text"><span>Số điện thoại người nhận:</span><?php echo $order['phone_receive'] ?></span>
+                            <span class="order-info-receive-text"><span>Địa chỉ người nhận:</span> <?php echo $order['address_receive'] ?></span>
+                        </div>
+                        <div class="order-info-receive-total">Tổng tiền: <?php echo $order['total_price'] ?></div>
+                    </div>
+                    <div class="btn-status-wrap">
+                        <a href="" class="btn-status-link">Xác nhận</a>
+                        <a href="" class="btn-status-link">Hủy</a>
+                    </div>
                 </div>
             </div>
             <!-- Home Content begin -->
         </div>
-        <script src="./js/main.js"></script>
 </body>
 
 </html>

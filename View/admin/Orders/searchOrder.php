@@ -22,7 +22,7 @@
         <div class="home-content">
             <div class="home-content-table">
                 <div class="home-content-table_header">
-                    <p>Hóa đơn</p>
+                    <p>Kết quả tìm kiếm</p>
                     <a href="?controller=order" class="home-content-table_header-link">
                         <i class='bx bx-arrow-back'></i>
                         Quay lại
@@ -32,50 +32,48 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>STT</th>
+                                <th>Mã Đơn</th>
                                 <th>Thời gian</th>
                                 <th>Trạng thái</th>
-                                <th>Khách hàng</th>
+                                <th>Tên Khách hàng</th>
                                 <th>Tổng tiền</th>
                                 <th>Duyệt</th>
-                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>12-3-2022</td>
-                                <td>Mới đặt</td>
-                                <td>Vũ Đức Tiến</td>
-                                <td>12000000 VND</td>
-                                <td>
-                                    <div class="button-wrap-confirm">
-                                        <button class="btn-submit">Xác nhận</button>
-                                        <button class="btn-destroy">Hủy</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class=" button-wrap">
-                                        <a href="?controller=order&action=show">
-                                            <button>
-                                                <i class='bx bx-show'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=order&action=update">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-                                        <a href="?controller=order&action=delete">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-
-                            </tr>
-
+                            <?php foreach ($order as $value) : ?>
+                                <tr>
+                                    <td><?php echo $value['id']  ?></td>
+                                    <td> <?php $date = strtotime($value['time']);
+                                            $date = date('d/m/Y H:i:s', $date);
+                                            echo $date;
+                                            ?></td>
+                                    <td style="color:
+                                    <?php if ($value['status'] == 0) {
+                                        echo '#F08000';
+                                    } elseif ($value['status'] == 1) {
+                                        echo '#12debc';
+                                    } elseif ($value['status'] == 2) {
+                                        echo '#999';
+                                    } ?> ; font-size:18px">
+                                        <?php if ($value['status'] == 0) {
+                                            echo 'Chờ duyệt đơn';
+                                        } elseif ($value['status'] == 1) {
+                                            echo 'Đã duyệt';
+                                        } elseif ($value['status'] == 2) {
+                                            echo 'Đã hủy';
+                                        } ?>
+                                    </td>
+                                    <td><?php echo $value['name']  ?></td>
+                                    <td><?php echo number_format($value['total'], 0, '.', '.'); ?> đ</td>
+                                    <td>
+                                        <div class="button-wrap-confirm">
+                                            <a href=""><button class="btn-submit">Xác nhận</button></a>
+                                            <button class="btn-destroy">Hủy</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

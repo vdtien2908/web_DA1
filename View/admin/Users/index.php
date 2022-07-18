@@ -30,19 +30,14 @@
             <div class="overlay" id="overlay" style="display:none;"></div>
 
             <div class="home-content-table">
-                <div class="home-content-table_header">
-                    <p>Khách hàng</p>
+                <div class="home-content-table_header header-user-main">
+                    <p class="header-user-main-text">Khách hàng</p>
                     <form action="?controller=user&action=find" method="POST">
                         <input type="text" placeholder="Tìm kiếm" name='name' autocomplete="off">
                         <button class="btn-search" type="submit">
                             <i class='bx bx-search'></i>
                         </button>
                     </form>
-                    <a href="?controller=user&action=formCreate">
-                        <button class="btn-card-add">
-                            <i class='bx bxs-user-plus'></i>
-                        </button>
-                    </a>
                 </div>
                 <div class="home-content-table_section">
                     <table>

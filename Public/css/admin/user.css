@@ -61,7 +61,7 @@ button {
 }
 
 .home-content-table_section {
-  height: 90vh;
+  height: 85vh;
   overflow: auto;
 }
 
@@ -484,4 +484,16 @@ button {
   font-weight: 300;
   color: red;
   display: inline-block;
+}
+
+.header-user-main {
+  position: relative;
+  justify-content: center;
+}
+
+.header-user-main-text {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
 }
