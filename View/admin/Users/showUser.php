@@ -66,6 +66,10 @@
                             <?php echo $user['email']; ?>
                             <span class=info-details-child-text-label>Email</span>
                         </span>
+                        <span class=info-details-child-text>
+                            **********
+                            <span class=info-details-child-text-label>Mật khẩu</span>
+                        </span>
                     </div>
                     <div class="info-details-child">
                         <span class=info-details-child-text>

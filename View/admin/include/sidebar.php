@@ -10,24 +10,24 @@ $page =  strtolower($_REQUEST['controller'])
 </div>
 <div class="sidebar-overlay" id="sidebar-overlay" style="display: none;"></div>
 <script>
-const formLogoutBox = document.getElementById('form-logout-box');
-const btnClose = document.getElementById('form-logout-btn-close');
-const sideOverlay = document.getElementById('sidebar-overlay');
+    const formLogoutBox = document.getElementById('form-logout-box');
+    const btnClose = document.getElementById('form-logout-btn-close');
+    const sideOverlay = document.getElementById('sidebar-overlay');
 
-function handleLogout() {
-    formLogoutBox.style.display = 'block';
-    sideOverlay.style.display = 'block';
-}
+    function handleLogout() {
+        formLogoutBox.style.display = 'block';
+        sideOverlay.style.display = 'block';
+    }
 
-sideOverlay.onclick = function() {
-    formLogoutBox.style.display = 'none';
-    sideOverlay.style.display = 'none';
-}
+    sideOverlay.onclick = function() {
+        formLogoutBox.style.display = 'none';
+        sideOverlay.style.display = 'none';
+    }
 
-btnClose.onclick = function() {
-    formLogoutBox.style.display = 'none';
-    sideOverlay.style.display = 'none';
-}
+    btnClose.onclick = function() {
+        formLogoutBox.style.display = 'none';
+        sideOverlay.style.display = 'none';
+    }
 </script>
 
 <div class="sidebar">
@@ -83,7 +83,7 @@ btnClose.onclick = function() {
                                                     echo 'active';
                                                 } ?>">
                 <i class='bx bx-news'></i>
-                <span class="links-name">Hóa đơn</span>
+                <span class="links-name">Đơn đặt hàng</span>
             </a>
         </li>
     </ul>

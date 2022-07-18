@@ -1,4 +1,8 @@
 /* Table */
+.home-content {
+  position: relative;
+}
+
 .home-content-table {
   width: 100%;
 }
@@ -58,7 +62,7 @@ button {
 }
 
 .home-content-table_section {
-  height: 90vh;
+  height: 85vh;
   overflow: auto;
 }
 
@@ -100,20 +104,8 @@ button {
   background-color: #f6f9fc;
 }
 
-.home-content-table_section tbody td a:nth-child(1) button {
-  background-color: #fbb03b;
-}
-
-.home-content-table_section tbody td a:nth-child(2) button {
-  background-color: #0298cf;
-}
-
-.home-content-table_section tbody td a:nth-child(3) button {
-  background-color: #ed1c24;
-}
-
 .home-content-table_section tbody td button:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   color: #000;
 }
 
@@ -150,6 +142,7 @@ button {
   padding: 3px 4px;
   min-width: 72px;
   margin-bottom: 6px !important;
+  transition: all 0.3s ease !important;
 }
 
 .home-content-table_section tbody td .button-wrap-confirm .btn-destroy:hover {
@@ -162,6 +155,7 @@ button {
   font-size: 16px;
   padding: 3px 4px;
   min-width: 73px;
+  transition: all 0.3s ease !important;
 }
 
 /* End table */
@@ -358,59 +352,149 @@ button {
   margin-right: 2px;
 }
 
-/* details */
-.info-details {
-  padding: 20px;
-  margin: 30px 50px;
-  border-radius: 6px;
-  border: 1px solid #112b3c;
-}
-.info-details-heading {
-  text-align: center;
-  font-size: 22px;
-  letter-spacing: 0.4px;
-}
-.info-details-child {
-  margin-top: 20px;
-  padding-bottom: 10px;
-  display: flex;
+.category-status-order {
+  padding: 8px;
 }
 
-.info-details-child-text {
-  position: relative;
-  font-size: 18px;
-  border: 1px solid #000;
-  padding: 14px 20px;
-  width: 100%;
-  border-radius: 6px;
-  display: block;
-  margin-right: 5px;
-}
-
-.info-details-child-text-label {
-  font-size: 16px;
+.form-confirm-delete {
   position: absolute;
-  top: -14px;
-  left: 20px;
-  padding: 0 10px;
-  background-color: #fff;
-}
-
-.info-details-link {
-  margin-top: 30px;
-  display: block;
-  font-size: 18px;
-  padding: 10px 20px;
-  background-color: #0298cf;
-  color: #fff;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #8493a5;
+  display: inline-block;
+  padding: 10px;
+  z-index: 99;
   border-radius: 6px;
-  margin-left: auto;
-  max-width: 120px;
-  text-align: center;
-  transition: 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.info-details-link:hover {
+.form-confirm-delete p {
+  padding: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.form-confirm-delete-btn {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.form-confirm-delete-btn-child {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.form-confirm-delete-btn-child:hover {
+  opacity: 0.7;
+}
+
+.form-confirm-delete-btn .form-confirm-delete-btn-child:first-child {
+  background-color: #ed1c24;
+  color: #fff;
+}
+
+.form-confirm-delete-btn .form-confirm-delete-btn-child:last-child {
+  background-color: #ccc;
+  color: #000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 240px;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.4;
+  z-index: 10;
+}
+
+.info-detail {
+  padding: 20px;
+}
+
+.home-content-table-order_details {
+  height: auto !important;
+  margin-bottom: 16px;
+}
+
+.order-id {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #ccc;
+}
+
+.order-id-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-id span {
+  color: orange;
+}
+
+.order-item-product {
+  background-color: #ccc !important;
+}
+
+.order-info-receive-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-info-receive {
+  word-wrap: break-word;
+}
+
+.order-info-receive-total {
+  color: #000;
+  font-size: 20px;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+.order-info-receive-text {
+  display: block;
+}
+
+.order-info-receive-text span {
+  display: inline-block;
+  font-size: 18px;
+  color: #000;
+  font-weight: 400;
+}
+
+.btn-status-wrap {
+  text-align: right;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.btn-status-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+
+.btn-status-link:hover {
   opacity: 0.8;
+}
+
+.btn-status-link:first-child {
+  background-color: #4682b4;
+  color: #fff;
+}
+
+.btn-status-link:last-child {
+  background-color: #ccc;
   color: #000;
 }

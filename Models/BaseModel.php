@@ -72,6 +72,12 @@ class BaseModel extends Database
         return $data;
     }
 
+    public function getQuery($sql)
+    {
+        $query = $this->_query($sql);
+        return  mysqli_fetch_assoc($query);
+    }
+
     public function getEmail($table, $email)
     {
         $sql = "SELECT * FROM admin WHERE email = '${email}'";
