@@ -57,4 +57,17 @@ class OrderModel extends BaseModel
         WHERE order_details.product_id = products.id and order_details.order_id =${id}";
         return $this->getByQuery($sql);
     }
+
+    function total_new_orders()
+    {
+        $sql = "SELECT COUNT(*) AS 'order_new'
+        FROM orders WHERE orders.status = 0";
+        return $this->getQuery($sql);
+    }
+
+    function total_price()
+    {
+        $sql = "SELECT sum(total_price) as 'total_price' FROM orders";
+        return $this->getQuery($sql);
+    }
 }

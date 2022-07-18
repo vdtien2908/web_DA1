@@ -29,7 +29,7 @@
                     <li class="home-content-body-item">
                         <div class="item-body-info-wrap">
                             <div class="item-body-info">
-                                <div class="item-body-info_quantity">150</div>
+                                <div class="item-body-info_quantity"><?php echo $total_order['order_new'] ?></div>
                                 <div class="item-body-info_description">
                                     Đơn hàng mới
                                 </div>
@@ -46,29 +46,11 @@
                         </div>
                     </li>
 
+
                     <li class="home-content-body-item">
                         <div class="item-body-info-wrap">
                             <div class="item-body-info">
-                                <div class="item-body-info_quantity">150 Tr</div>
-                                <div class="item-body-info_description">
-                                    Doanh thu
-                                </div>
-                            </div>
-                            <div class="home-content-body-item_logo">
-                                <i class='bx bx-bar-chart'></i>
-                            </div>
-                        </div>
-                        <!-- <div class="home-content-body-item-link">
-                            <a href="?controller=order">
-                                Xem chi tiết
-                                <i class='bx bx-right-arrow-alt'></i>
-                            </a>
-                        </div> -->
-                    </li>
-                    <li class="home-content-body-item">
-                        <div class="item-body-info-wrap">
-                            <div class="item-body-info">
-                                <div class="item-body-info_quantity">300</div>
+                                <div class="item-body-info_quantity"><?php echo $total_user['user_new'] ?></div>
                                 <div class="item-body-info_description">
                                     Khách hàng
                                 </div>
@@ -87,7 +69,7 @@
                     <li class="home-content-body-item">
                         <div class="item-body-info-wrap">
                             <div class="item-body-info">
-                                <div class="item-body-info_quantity">50</div>
+                                <div class="item-body-info_quantity"><?php echo $total_product['product'] ?></div>
                                 <div class="item-body-info_description">
                                     Sản phẩm
                                 </div>
@@ -103,13 +85,25 @@
                             </a>
                         </div>
                     </li>
+                    <li class="home-content-body-item">
+                        <div class="item-body-info-wrap">
+                            <div class="item-body-info">
+                                <div class="item-body-info_quantity" id="id_price"><?php echo number_format($total_price['total_price'], 0, '.', '.'); ?></div>
+                                <div class="item-body-info_description" id="id_description">
+                                    Doanh thu
+                                </div>
+                            </div>
+                            <div class="home-content-body-item_logo">
+                                <i class='bx bx-bar-chart'></i>
+                            </div>
+                        </div>
+                    </li>
 
                 </ul>
             </div>
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>
