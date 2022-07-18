@@ -45,6 +45,15 @@ class OrderController extends BaseController
         header('Location:?controller=order');
     }
 
+    function updateShow()
+    {
+        $id = $_GET['id'];
+        $status = $_GET['status'];
+        $data = ['status' => $status];
+        $this->orderModel->update($id, $data);
+        $this->show();
+    }
+
     public function find()
     {
         $id = $_POST['id'];

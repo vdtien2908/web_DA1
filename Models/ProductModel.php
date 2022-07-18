@@ -36,4 +36,11 @@ class ProductModel extends BaseModel
     {
         return $this->deleteMain(self::TABLE, $id);
     }
+
+    function total_product()
+    {
+        $sql = "SELECT COUNT(*) AS 'product'
+        FROM products";
+        return $this->getQuery($sql);
+    }
 }

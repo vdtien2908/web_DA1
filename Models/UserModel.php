@@ -41,4 +41,11 @@ class UserModel extends BaseModel
     {
         return $this->deleteMain(self::TABLE, $id);
     }
+
+    function total_new_users()
+    {
+        $sql = "SELECT COUNT(*) AS 'user_new'
+        FROM users";
+        return $this->getQuery($sql);
+    }
 }

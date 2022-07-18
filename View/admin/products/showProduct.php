@@ -29,51 +29,49 @@
                     </a>
                 </div>
                 <?php foreach ($result as $value) : ?>
-                <div class="home-content-product-detail-wrap">
-                    <div class="home-content-product-detail">
-                        <span class="product-detail-category <?php if ($value['nameCategory'] == 'Nam') {
+                    <div class="home-content-product-detail-wrap">
+                        <div class="home-content-product-detail">
+                            <span class="product-detail-category <?php if ($value['nameCategory'] == 'Nam') {
                                                                         echo 'active-boy';
                                                                     } elseif ($value['nameCategory'] == 'Nữ') {
                                                                         echo 'active-girl';
                                                                     } else {
                                                                         echo 'active-category';
                                                                     } ?>">
-                            <?php echo $value['nameCategory']; ?>
-                        </span>
-                        <div class="product-detail-img">
-                            <img src="./Public/img/product/<?php echo $value['img'] ?>" alt="">
-                        </div>
-                        <div class="product-detail-content">
-                            <h2 class="product-detail-content-name"><?php echo $value['nameProduct']; ?></h2>
-                            <span
-                                class="
+                                <?php echo $value['nameCategory']; ?>
+                            </span>
+                            <div class="product-detail-img">
+                                <img src="./Public/img/product/<?php echo $value['img'] ?>" alt="">
+                            </div>
+                            <div class="product-detail-content">
+                                <h2 class="product-detail-content-name"><?php echo $value['nameProduct']; ?></h2>
+                                <span class="
                                 product-detail-content-price"><?php echo number_format($value['price'], 0, '.', '.'); ?>
-                                VND</span>
-                            <p class="product-detail-content-description"><?php echo $value['description']; ?></p>
-                            <p class="product-detail-content-Manufacturer">Nhà sản xuất:
-                                <?php echo $value['nameManufacturer']; ?></p>
-                        </div>
-                        <div class="product-detail-time">
-                            <p class="product-detail-create_at">Thời gian tạo:
-                                <?php $date = strtotime($value['create_at']);
+                                    VND</span>
+                                <p class="product-detail-content-description"><?php echo $value['description']; ?></p>
+                                <p class="product-detail-content-Manufacturer">Nhà sản xuất:
+                                    <?php echo $value['nameManufacturer']; ?></p>
+                            </div>
+                            <div class="product-detail-time">
+                                <p class="product-detail-create_at">Thời gian tạo:
+                                    <?php $date = strtotime($value['create_at']);
                                     $date = date('d/m/Y H:i:s', $date);
                                     echo $date;
                                     ?>
-                            </p>
-                            <?php if ($value['update_at']) {
+                                </p>
+                                <?php if ($value['update_at']) {
                                     $date = strtotime($value['update_at']);
                                     $date = date('d/m/Y H:i:s', $date);
                                     echo "<p class='product-detail-update_at'>Cập nhật lần cuối: " . $date . "</p>";
                                 } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
         <!-- Home Content begin -->
     </div>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>
