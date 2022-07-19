@@ -97,7 +97,7 @@
                     <span class="form-messages"></span>
                 </div>
                 <div class="btn-wrap">
-                    <button type="submit" class="btn-wrap-child">Nhập</button>
+                    <button type="submit" class="btn-wrap-child">Cập nhật</button>
                 </div>
             </form>
         </div>
