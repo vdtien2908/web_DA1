@@ -43,18 +43,19 @@ function validator(options) {
     const imgElement = document.querySelector('#imgInp');
     if (imgElement.value == '') {
       event.preventDefault();
-      (function tempAlert(msg, duration) {
-        var el = document.createElement('div');
-        el.setAttribute(
-          'style',
-          'position:absolute;bottom:16%;left:365px;background-color:white;color:red;font-weight:300;font-size:15px'
-        );
-        el.innerHTML = msg;
-        setTimeout(function () {
-          el.parentNode.removeChild(el);
-        }, duration);
-        document.body.appendChild(el);
-      })('Bạn chưa chọn hình ảnh cho sản phẩm', 5000);
+      //   ------ Editing --------
+      // (function tempAlert(msg, duration) {
+      //   var el = document.createElement('div');
+      //   el.setAttribute(
+      //     'style',
+      //     'position:absolute;bottom:16%;left:365px;background-color:white;color:red;font-weight:300;font-size:15px'
+      //   );
+      //   el.innerHTML = msg;
+      //   setTimeout(function () {
+      //     el.parentNode.removeChild(el);
+      //   }, duration);
+      //   document.body.appendChild(el);
+      // })('Bạn chưa chọn hình ảnh cho sản phẩm', 5000);
     }
   };
 

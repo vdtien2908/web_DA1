@@ -71,8 +71,15 @@ class ManufacturerController extends BaseController
     {
         $id = $_GET['id'];
         if ($id) {
-            $this->ManufacturerModel->delete($id);
-            $this->index();
+            $result = $this->ManufacturerModel->isDelete($id);
+            if ($result) {
+                $this->ManufacturerModel->deleteOfProduct($id);
+                $this->ManufacturerModel->delete($id);
+                $this->index();
+            } else {
+                $this->ManufacturerModel->delete($id);
+                $this->index();
+            }
         } else {
             $this->index();
         }
