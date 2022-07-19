@@ -80,9 +80,6 @@
                     <div class="form-file-wrap">
                         <img id="blah" src="#" alt="Hình ảnh" />
                         <input type="file" id="imgInp" accept="image/*" name="file">
-                        <label for="imgInp" class="form-label-file">
-                            <i class='bx bx-image'></i>
-                        </label>
                     </div>
                     <span class="form-messages"></span>
                 </div>

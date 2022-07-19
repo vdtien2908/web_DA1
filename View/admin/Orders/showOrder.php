@@ -91,6 +91,9 @@
                             <span class="order-info-receive-text"><span>Tên người nhận:</span> <?php echo $order['name_receive'] ?> </span>
                             <span class="order-info-receive-text"><span>Số điện thoại người nhận:</span><?php echo $order['phone_receive'] ?></span>
                             <span class="order-info-receive-text"><span>Địa chỉ người nhận:</span> <?php echo $order['address_receive'] ?></span>
+                            <span class="order-info-receive-text" style="display:<?php if (!$order['note']) {
+                                                                                        echo 'none';
+                                                                                    }  ?> ;"><span>Ghi chú: </span> <?php echo $order['note'] ?></span>
                         </div>
                         <div class="order-info-receive-total">Tổng tiền: <?php echo number_format($order['total_price'], 0, '.', '.'); ?></div>
                     </div>

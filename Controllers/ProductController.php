@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\Language;
+
 class ProductController extends BaseController
 {
     private $productModel;
@@ -184,7 +186,7 @@ class ProductController extends BaseController
         $date = date('Y-m-d H:i:s');
         $data['update_at'] = $date;
         $this->productModel->update($id, $data);
-        $this->formUpdate();
+        header("location: ?controller=product");
     }
 
     public function delete()

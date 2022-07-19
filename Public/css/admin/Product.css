@@ -431,6 +431,7 @@ button {
 }
 .product-detail-content {
   margin-left: 20px;
+  min-width: 580px;
 }
 .product-detail-content-name {
   font-size: 26px;
