@@ -23,7 +23,7 @@
         <div class="home-content">
 
             <div class="form-confirm-delete" style="display: none;" id="form-confirm-delete-box">
-                <p>Bạn có chắc chắn muốn xóa không ?</p>
+                <p>Nếu bạn xóa tất cả sản phẩm của danh mục này sẽ biến mất. Bạn chắc chắn muốn xóa ?</p>
                 <div class="form-confirm-delete-btn">
                     <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-submit">Có</a>
                     <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-close">Hủy</a>

@@ -29,4 +29,16 @@ class CategoryModel extends BaseModel
     {
         return $this->deleteMain(self::TABLE, $id);
     }
+
+    public function isDelete($id)
+    {
+        $sql = "SELECT * FROM products WHERE products.category_id = ${id}";
+        return $this->getByQuery($sql);
+    }
+
+    public function deleteOfProduct($id)
+    {
+        $sql = "DELETE FROM products WHERE products.category_id = ${id}";
+        return $this->deleteCustom($sql);
+    }
 }

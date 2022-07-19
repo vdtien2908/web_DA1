@@ -18,13 +18,7 @@ class CategoryController extends BaseController
         return $this->view('admin.category.index', ['result' => $result]);
     }
 
-    // public function show()
-    // {
-    //     $id = $_GET['id'];
-    //     $result = $this->categoryModel->findById($id);
-    //     echo '<br>';
-    //     print_r($result);
-    // }
+
 
     public function create()
     {
@@ -60,8 +54,15 @@ class CategoryController extends BaseController
     {
         $id = $_GET['id'];
         if ($id) {
-            $this->categoryModel->delete($id);
-            $this->index();
+            $result = $this->categoryModel->isDelete($id);
+            if ($result) {
+                $this->categoryModel->deleteOfProduct($id);
+                $this->categoryModel->delete($id);
+                $this->index();
+            } else {
+                $this->categoryModel->delete($id);
+                $this->index();
+            }
         } else {
             $this->index();
         }

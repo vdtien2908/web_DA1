@@ -21,7 +21,7 @@
         <!-- Home Content begin -->
         <div class="home-content">
             <div class="form-confirm-delete" style="display: none;" id="form-confirm-delete-box">
-                <p>Bạn có chắc chắn muốn xóa không ?</p>
+                <p>Nếu bạn xóa tất cả sản phẩm của nhà sản xuất này này sẽ biến mất. Bạn chắc chắn muốn xóa ?</p>
                 <div class="form-confirm-delete-btn">
                     <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-submit">Có</a>
                     <a class="form-confirm-delete-btn-child" id="form-confirm-delete-btn-close">Hủy</a>
@@ -51,34 +51,33 @@
                         <tbody>
                             <?php $number = 1;
                             foreach ($result as $value) : ?>
-                            <tr>
-                                <td> <?php echo $number;
+                                <tr>
+                                    <td> <?php echo $number;
                                             $number += 1; ?></td>
-                                <td>
-                                    <?php echo $value['name']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $value['address']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $value['phone']; ?>
-                                </td>
-                                <td>
-                                    <div class="button-wrap">
-                                        <a
-                                            href="?controller=manufacturer&action=update&id= <?php echo $value['id']; ?>">
-                                            <button>
-                                                <i class='bx bxs-edit'></i>
-                                            </button>
-                                        </a>
-                                        <a href="#" onclick="handleDelete(<?php echo $value['id']; ?>)">
-                                            <button>
-                                                <i class='bx bx-trash'></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <?php echo $value['name']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $value['address']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $value['phone']; ?>
+                                    </td>
+                                    <td>
+                                        <div class="button-wrap">
+                                            <a href="?controller=manufacturer&action=update&id= <?php echo $value['id']; ?>">
+                                                <button>
+                                                    <i class='bx bxs-edit'></i>
+                                                </button>
+                                            </a>
+                                            <a href="#" onclick="handleDelete(<?php echo $value['id']; ?>)">
+                                                <button>
+                                                    <i class='bx bx-trash'></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
 
                         </tbody>
@@ -89,26 +88,26 @@
         <!-- Home Content begin -->
     </div>
     <script>
-    const formDeleteBox = document.getElementById('form-confirm-delete-box');
-    const overlay = document.getElementById('overlay');
-    const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
-    const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
+        const formDeleteBox = document.getElementById('form-confirm-delete-box');
+        const overlay = document.getElementById('overlay');
+        const btnDeleteClose = document.getElementById('form-confirm-delete-btn-close');
+        const btnDeleteSubmit = document.getElementById('form-confirm-delete-btn-submit');
 
-    function handleDelete(id) {
-        formDeleteBox.style.display = 'block';
-        overlay.style.display = 'block';
-        btnDeleteSubmit.href = `?controller=manufacturer&action=delete&id=${id}`;
-    }
+        function handleDelete(id) {
+            formDeleteBox.style.display = 'block';
+            overlay.style.display = 'block';
+            btnDeleteSubmit.href = `?controller=manufacturer&action=delete&id=${id}`;
+        }
 
-    overlay.onclick = function() {
-        formDeleteBox.style.display = 'none';
-        overlay.style.display = 'none';
-    }
+        overlay.onclick = function() {
+            formDeleteBox.style.display = 'none';
+            overlay.style.display = 'none';
+        }
 
-    btnDeleteClose.onclick = function() {
-        formDeleteBox.style.display = 'none';
-        overlay.style.display = 'none';
-    }
+        btnDeleteClose.onclick = function() {
+            formDeleteBox.style.display = 'none';
+            overlay.style.display = 'none';
+        }
     </script>
 </body>
 

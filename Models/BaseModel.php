@@ -62,6 +62,11 @@ class BaseModel extends Database
         $data = [];
     }
 
+    public function deleteCustom($sql)
+    {
+        $this->_query($sql);
+    }
+
     public function getByQuery($sql)
     {
         $query = $this->_query($sql);
